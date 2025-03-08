@@ -6,8 +6,16 @@ function createGrid(size) {
         cell.style.border = "1px solid";
         cell.style.width = width + "px";
         cell.style.height = width + "px";
+        cell.style.opacity = 0;
         container.appendChild(cell);
     }
+}
+
+function getRandomColor() {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 const button = document.querySelector("button");
@@ -25,7 +33,9 @@ button.addEventListener("click", () => {
 const container = document.querySelector(".container");
 container.addEventListener("mouseover", (e) => {
     const targetCell = e.target;
-    targetCell.classList.add("hover");
+    let currentOpacity = parseFloat(getComputedStyle(targetCell).opacity);
+    targetCell.style.opacity = currentOpacity + 0.1;
+    targetCell.style.background = getRandomColor();
 });
 
 createGrid(16);
