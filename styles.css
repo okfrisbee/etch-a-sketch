@@ -9,6 +9,6 @@
     flex-wrap: wrap;
 }
 
-.cell {
-    border: 1px solid;
+.hover {
+    background-color: black;
 }
